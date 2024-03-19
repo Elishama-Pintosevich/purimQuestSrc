@@ -1,0 +1,101 @@
+<div class="myBg h-100">
+
+    <div class="d-flex w-100  justify-content-center myBg">
+      <div class="pt-5 mx-3 w-100">
+          <div dir="rtl" class="text-light pe-2 fs-4 pt-5 pb-3 fw-bold">
+               ברוכים הבאים לחידון פורים 370 🥳
+          </div>
+          <mat-stepper class="rounded-5 w-100" dir="rtl" linear orientation="vertical" #stepper>
+              
+          <mat-step [stepControl]="condition ? firstFormGroup : dummyFormControl" [editable]="false">
+              <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>חידה ראשונה</ng-template>
+              <ng-template matStepContent>
+                  <p>מה הוא שמו של מפתח האתר זה</p>
+                  <mat-form-field>
+                      <mat-label>פתרון</mat-label>
+                      <input matInput (input)="onInput()" formControlName="firstCtrl"  required>
+                  </mat-form-field>
+                  <div>
+                      <button   mat-button matStepperNext>שליחה</button>
+                  </div>
+  
+                </ng-template>
+              </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup" [editable]="false">
+              <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>חידה שניה</ng-template>
+              <ng-template matStepContent>
+                <p>כמה עולה בירה בבר הישן</p>
+                <mat-form-field>
+                    <mat-label>פתרון</mat-label>
+                    <input matInput formControlName="secondCtrl" 
+                        required>
+                </mat-form-field>
+                <div>
+                    
+                    <button  mat-button matStepperNext>שליחה</button>
+                </div>
+              </ng-template>
+              </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup" [editable]="false">
+              <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>חידה שלישית</ng-template>
+              <ng-template matStepContent>
+                <p>איפה ישבה המחלקה כשהיה שיפוץ</p>
+                <mat-form-field>
+                    <mat-label>פתרון</mat-label>
+                    <input matInput formControlName="secondCtrl" 
+                        required>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>שליחה</button>
+                </div>
+              </ng-template>
+             
+              </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup" [editable]="false">
+              <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>חידה רביעית</ng-template>
+              <mat-form-field>
+                  <mat-label>פתרון</mat-label>
+                  <input matInput formControlName="secondCtrl" 
+                      required>
+              </mat-form-field>
+              <div>
+                  
+                  <button mat-button matStepperNext>שליחה</button>
+              </div>
+              </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup" [editable]="false">
+              <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>חידה חמישית</ng-template>
+              <mat-form-field>
+                  <mat-label>פתרון</mat-label>
+                  <input matInput formControlName="secondCtrl" 
+                      required>
+              </mat-form-field>
+              <div>
+                  
+                  <button mat-button matStepperNext>שליחה</button>
+              </div>
+              </form>
+          </mat-step>
+          <mat-step>
+              <ng-template matStepLabel>סיום</ng-template>
+              <p>הקבוצה שלכם ניצחה</p>
+              <div>
+              
+              <button mat-button (click)="stepper.reset()">Reset</button>
+              <button mat-button (click)="onWin()">לסיום</button>
+              </div>
+          </mat-step>
+          </mat-stepper>
+          
+      </div>
+    </div>
+</div>
