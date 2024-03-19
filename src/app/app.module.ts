@@ -11,12 +11,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { StartComponent } from './start/start.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestComponent,
-    WinComponent
+    WinComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatStepperModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule
   ],
   providers: [
     provideAnimationsAsync()

@@ -1,97 +1,155 @@
 <div class="myBg h-100">
 
     <div class="d-flex w-100  justify-content-center myBg">
-      <div class="pt-5 mx-3 w-100">
-          <div dir="rtl" class="text-light pe-2 fs-4 pt-5 pb-3 fw-bold">
-               ברוכים הבאים לחידון פורים 370 🥳
+      <div class="pb-5 pt-5 mx-3 w-100">
+          <div dir="rtl" class="text-light pe-2 fs-4 pt-3 pb-3 fw-bold">
+               ברוכים הבאים לחידון פורים  🥳
           </div>
           <mat-stepper class="rounded-5 w-100" dir="rtl" linear orientation="vertical" #stepper>
               
+          <mat-step  [editable]="true">
+              
+              <ng-template matStepLabel>משימה</ng-template>
+              <ng-template matStepContent>
+                  <p>לכו לפודטראק, חפשו שם רמזים</p>
+                  <div>
+                      <button   mat-raised-button color="warn" matStepperNext>המשך</button>
+                  </div>
+  
+                </ng-template>
+              
+          </mat-step>
           <mat-step [stepControl]="condition ? firstFormGroup : dummyFormControl" [editable]="false">
               <form [formGroup]="firstFormGroup">
-              <ng-template matStepLabel>חידה ראשונה</ng-template>
+              <ng-template matStepLabel>חידה 1</ng-template>
               <ng-template matStepContent>
-                  <p>מה הוא שמו של מפתח האתר זה</p>
+                  <p>איזה מיקום קיבלתם?</p>
                   <mat-form-field>
-                      <mat-label>פתרון</mat-label>
-                      <input matInput (input)="onInput()" formControlName="firstCtrl"  required>
+                      <mat-label>פתרון - 6 אותיות</mat-label>
+                      <input matInput (input)="onInput(firstFormGroup,1)" formControlName="one"  required>
                   </mat-form-field>
                   <div>
-                      <button   mat-button matStepperNext>שליחה</button>
+                      <button (click)="onClick()"  mat-raised-button color="warn" matStepperNext>שליחה</button>
+                      <div *ngIf="wrong" class="text-danger">תשובה לא נכונה, נסה שוב</div>
                   </div>
   
                 </ng-template>
               </form>
           </mat-step>
+          <mat-step  [editable]="true">
+              
+            <ng-template matStepLabel>משימה</ng-template>
+            <ng-template matStepContent>
+                <p>לכו למיקום שקיבלתם, חפשו שם רמזים </p>
+                <div>
+                    <button    mat-raised-button color="warn" matStepperNext>המשך</button>
+                </div>
+
+              </ng-template>
+            
+        </mat-step>
           <mat-step [stepControl]="secondFormGroup" [editable]="false">
               <form [formGroup]="secondFormGroup">
-              <ng-template matStepLabel>חידה שניה</ng-template>
+              <ng-template matStepLabel>חידה 2</ng-template>
               <ng-template matStepContent>
-                <p>כמה עולה בירה בבר הישן</p>
+                <p>כמה עולה יין הר תבור וקערת בוטנים? רמז: חפשו מידע בבר הישן של המתחם</p>
                 <mat-form-field>
                     <mat-label>פתרון</mat-label>
-                    <input matInput formControlName="secondCtrl" 
+                    <input matInput (input)="onInput(secondFormGroup,2)" formControlName="one" 
                         required>
                 </mat-form-field>
                 <div>
                     
-                    <button  mat-button matStepperNext>שליחה</button>
+                    <button (click)="onClick()"   mat-raised-button color="warn" matStepperNext>שליחה</button>
+                    <div *ngIf="wrong" class="text-danger">תשובה לא נכונה, נסה שוב</div>
                 </div>
               </ng-template>
               </form>
           </mat-step>
-          <mat-step [stepControl]="secondFormGroup" [editable]="false">
-              <form [formGroup]="secondFormGroup">
-              <ng-template matStepLabel>חידה שלישית</ng-template>
+          <mat-step  [editable]="true">
+              
+            <ng-template matStepLabel>משימה</ng-template>
+            <ng-template matStepContent>
+                <p>לכו לדשא, חפשו שם רמזים </p>
+                <div>
+                    <button    mat-raised-button color="warn" matStepperNext>המשך</button>
+                </div>
+
+              </ng-template>
+            
+        </mat-step>
+          <mat-step [stepControl]="thirdFormGroup" [editable]="false">
+              <form [formGroup]="thirdFormGroup">
+              <ng-template matStepLabel>חידה 3</ng-template>
               <ng-template matStepContent>
-                <p>איפה ישבה המחלקה כשהיה שיפוץ</p>
+                <p>שאלות מורשת</p>
                 <mat-form-field>
-                    <mat-label>פתרון</mat-label>
-                    <input matInput formControlName="secondCtrl" 
+                    <mat-label>שאלה 1</mat-label>
+                    <input matInput (input)="onInput(thirdFormGroup,3)" formControlName="one" 
+                        required>
+                </mat-form-field>
+                
+                <mat-form-field>
+                    <mat-label>שאלה 2</mat-label>
+                    <input (input)="onInput(thirdFormGroup,3)" matInput formControlName="two" 
+                        required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>שאלה 3</mat-label>
+                    <input (input)="onInput(thirdFormGroup,3)" matInput formControlName="three" 
+                        required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>שאלה 4</mat-label>
+                    <input (input)="onInput(thirdFormGroup,3)" matInput formControlName="for" 
                         required>
                 </mat-form-field>
                 <div>
-                    <button mat-button matStepperNext>שליחה</button>
+                    <button (click)="onClick()" mat-raised-button color="warn" matStepperNext>שליחה</button>
+                    <div *ngIf="wrong" class="text-danger">תשובות לא נכונות, נסה שוב</div>
                 </div>
               </ng-template>
              
               </form>
           </mat-step>
-          <mat-step [stepControl]="secondFormGroup" [editable]="false">
-              <form [formGroup]="secondFormGroup">
-              <ng-template matStepLabel>חידה רביעית</ng-template>
-              <mat-form-field>
-                  <mat-label>פתרון</mat-label>
-                  <input matInput formControlName="secondCtrl" 
-                      required>
-              </mat-form-field>
-              <div>
-                  
-                  <button mat-button matStepperNext>שליחה</button>
-              </div>
-              </form>
-          </mat-step>
-          <mat-step [stepControl]="secondFormGroup" [editable]="false">
-              <form [formGroup]="secondFormGroup">
-              <ng-template matStepLabel>חידה חמישית</ng-template>
-              <mat-form-field>
-                  <mat-label>פתרון</mat-label>
-                  <input matInput formControlName="secondCtrl" 
-                      required>
-              </mat-form-field>
-              <div>
-                  
-                  <button mat-button matStepperNext>שליחה</button>
-              </div>
+          <mat-step  [editable]="true">
+              
+            <ng-template matStepLabel>משימה</ng-template>
+            <ng-template matStepContent>
+                <p>לכו לחדנ, חפשו שם רמזים </p>
+                <div>
+                    <button    mat-raised-button color="warn" matStepperNext>המשך</button>
+                </div>
+
+              </ng-template>
+            
+        </mat-step>
+          
+          <mat-step [stepControl]="forthFormGroup" [editable]="false">
+              <form [formGroup]="forthFormGroup">
+              <ng-template matStepLabel>חידת החידות</ng-template>
+              <ng-template matStepContent>
+                <p>איזה משפט יצא לכם מהאותיות שאספתם בתחנות?</p>
+                <mat-form-field>
+                    <mat-label>פתרון</mat-label>
+                    <input (input)="onInput(forthFormGroup,4)" matInput formControlName="one" 
+                        required>
+                </mat-form-field>
+                <div>
+                    
+                    <button (click)="onClick()"  mat-raised-button color="warn" matStepperNext>שליחה</button>
+                    <div *ngIf="wrong" class="text-danger">תשובה לא נכונה, נסה שוב</div>
+                </div>
+              </ng-template>
               </form>
           </mat-step>
           <mat-step>
-              <ng-template matStepLabel>סיום</ng-template>
-              <p>הקבוצה שלכם ניצחה</p>
+              <ng-template matStepLabel>ניצחון</ng-template>
+              <p>הקבוצה שלכם ניצחה!!!</p>
               <div>
               
-              <button mat-button (click)="stepper.reset()">Reset</button>
-              <button mat-button (click)="onWin()">לסיום</button>
+              
+              <button mat-raised-button color="warn" (click)="onWin()">לסיום</button>
               </div>
           </mat-step>
           </mat-stepper>
